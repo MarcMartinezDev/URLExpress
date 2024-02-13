@@ -6,16 +6,16 @@ import TextFieldInput from "../components/TextFieldInput.jsx";
 
 const HomePage = () => {
   const inputUrl = useRef(null);
-  const inputCustomPath = useRef(null);
+  const customUrl = useRef(null);
   const { shortUrl, setShortUrl, url, setUrl, error, setError } = useContext(context);
-
+  
   const handleSumbit = async (e) => {
     e.preventDefault();
     if (!inputUrl.current.value) {
       setError(true);
       return;
     }
-    await createShortUrl(inputUrl.current.value, inputCustomPath.current.value)
+    await createShortUrl(inputUrl.current.value, customUrl.current.value)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -35,7 +35,7 @@ const HomePage = () => {
         Get short url
       </Button>
       <TextFieldInput 
-        textFieldRef={inputCustomPath}
+        textFieldRef={customUrl}
         textFieldError={error}
         textFieldErrorMessage="Please write an url"
       />
