@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useState } from "react";
 import UrlPage from "./pages/UrlPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import "./index.css";
 
 export const context = createContext();
 

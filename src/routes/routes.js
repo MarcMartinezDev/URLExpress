@@ -5,7 +5,7 @@ const router = Router();
 router.get("/:url", async (req, res) => {
   const { url } = req.params;
 
-  const urlExists = await Url.findOne({ $or: [{ shortUrl: url }, { customUrl: url }] });
+  const urlExists = await Url.findOne({ $or: [{ uniqueUrl: url }, { customUrl: url }] });
   if (!urlExists) return res.status(404).json({ message: "Url not found" });
 
   res.json(urlExists);

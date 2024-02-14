@@ -4,16 +4,32 @@ import Url from "../models/url.js";
 const router = Router();
 
 router.post("/create", async (req, res) => {
-  const { url, customUrl } = req.body;
+  const { url } = req.body;
   const shortUrl = Math.random().toString(36).substring(2, 6);
 
   const urlExists = await Url.findOne({ url });
 
+  if (urlExists) return res.send(urlExists);
+
+  const newUrl = new Url({
+    url,
+    uniqueUrl: shortUrl,
+  });
+
+  await newUrl.save();
+  res.send(newUrl);
+});
+
+router.post("/create-custom", async (req, res) => {
+  const { url, customUrl } = req.body;
+  const shortUrl = Math.random().toString(36).substring(2, 6);
+
+  const urlExists = await Url.findOne({ url });
+  const customUrlExists = await Url.findOne({ customUrl });
+
+  if (customUrlExists) return res.status(400).json({ error: "custom url already exists" });
+
   if (urlExists) {
-    const customUrlExists = await Url.findOne({ customUrl: customUrl });
-    if (customUrlExists) return res.status(400).json({mess:"custom url already exists"});
-    if(!customUrl) return res.status(400).json(urlExists.uniqueUrl);
-    // add the custom url to the array of custom urls
     const updateUrl = await Url.findOneAndUpdate(
       { url: urlExists.url },
       { $push: { customUrl: customUrl } },
@@ -26,11 +42,10 @@ router.post("/create", async (req, res) => {
   const newUrl = new Url({
     url,
     uniqueUrl: shortUrl,
-    customUrl: customUrl == "" ? shortUrl : [shortUrl, customUrl],
+    customUrl,
   });
 
   await newUrl.save();
-
   res.send(newUrl);
 });
 
