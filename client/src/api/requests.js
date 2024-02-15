@@ -1,4 +1,4 @@
-export const createShortUrl = (url) =>
+export const createShortUrl = url =>
   fetch("http://localhost:3000/api/create", {
     method: "POST",
     headers: {
@@ -7,14 +7,13 @@ export const createShortUrl = (url) =>
     body: JSON.stringify({ url }),
   });
 
-  export const createCustomUrl = (url, customUrl) =>
-  fetch("http://localhost:3000/api/create-custom", {
-    method: "POST",
+export const deleteShortUrl = shortUrl =>
+  fetch(`http://localhost:3000/api/delete`, {
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ url, customUrl }),
+    body: JSON.stringify({ shortUrl }),
   });
- 
 
-export const redirectTo = (url) => fetch(`http://localhost:3000/${url}`);
+export const redirectTo = url => fetch(`http://localhost:3000/${url}`);

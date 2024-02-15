@@ -3,7 +3,11 @@ const Button = ({ textButton, typeButton, clickEvent, override }) => {
     <button
       onClick={clickEvent}
       typeof={typeButton}
-      className={override ? override : "w-1/2 p-2 bg-purple-400 rounded-md shadow-md text-black text-lg hover:bg-purple-600 transition-all"}
+      className={
+        override
+          ? override
+          : "w-1/4 p-2 bg-purple-400 rounded-md shadow-md text-black text-lg hover:bg-purple-600 transition-all"
+      }
     >
       {textButton}
     </button>

@@ -5,15 +5,17 @@ const urlSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  customUrl: {
-    type: [String], 
-  },
-  uniqueUrl: {
+  shortUrl: {
     type: String,
   },
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  expireAt: {
+    type: Date,
+    default: Date.now,
+    index: { expires: 86400 }, // 24 hours
   },
 });
 

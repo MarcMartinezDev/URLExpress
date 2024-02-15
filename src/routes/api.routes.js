@@ -5,48 +5,25 @@ const router = Router();
 
 router.post("/create", async (req, res) => {
   const { url } = req.body;
-  const shortUrl = Math.random().toString(36).substring(2, 6);
 
-  const urlExists = await Url.findOne({ url });
+  if (!url) return res.status(400).json({ error: "url is required" });
 
-  if (urlExists) return res.send(urlExists);
+  const randomUrl = Math.random().toString(36).substring(2, 6);
 
   const newUrl = new Url({
     url,
-    uniqueUrl: shortUrl,
+    shortUrl: randomUrl,
   });
 
   await newUrl.save();
-  res.send(newUrl);
+  return res.json(newUrl.shortUrl);
 });
 
-router.post("/create-custom", async (req, res) => {
-  const { url, customUrl } = req.body;
-  const shortUrl = Math.random().toString(36).substring(2, 6);
+router.delete("/delete", async (req, res) => {
+  const { shortUrl } = req.body;
 
-  const urlExists = await Url.findOne({ url });
-  const customUrlExists = await Url.findOne({ customUrl });
-
-  if (customUrlExists) return res.status(400).json({ error: "custom url already exists" });
-
-  if (urlExists) {
-    const updateUrl = await Url.findOneAndUpdate(
-      { url: urlExists.url },
-      { $push: { customUrl: customUrl } },
-      { new: true }
-    );
-    updateUrl.save();
-    return res.send(updateUrl);
-  }
-
-  const newUrl = new Url({
-    url,
-    uniqueUrl: shortUrl,
-    customUrl,
-  });
-
-  await newUrl.save();
-  res.send(newUrl);
+  await Url.deleteOne({ shortUrl });
+  res.json({ message: "Url deleted" });
 });
 
 router.get("/admin/delete", async (req, res) => {

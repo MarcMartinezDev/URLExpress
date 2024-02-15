@@ -7,22 +7,16 @@ import "./index.css";
 export const context = createContext();
 
 const App = () => {
-  const [shortUrl, setShortUrl] = useState(null);
-  const [url, setUrl] = useState(null);
   const [error, setError] = useState(null);
-  const [options, setOptions] = useState({});
+  const [deleteUrl, setDeleteUrl] = useState(false);
 
   return (
     <context.Provider
       value={{
-        shortUrl,
-        setShortUrl,
-        url,
-        setUrl,
         error,
         setError,
-        setOptions,
-        options,
+        deleteUrl,
+        setDeleteUrl,
       }}
     >
       <BrowserRouter>
