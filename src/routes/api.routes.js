@@ -23,7 +23,7 @@ router.delete("/delete", async (req, res) => {
   const { shortUrl } = req.body;
 
   await Url.deleteOne({ shortUrl });
-  res.json({ message: "Url deleted" });
+  res.json({ message: "Url has deleted" });
 });
 
 router.get("/admin/delete", async (req, res) => {
