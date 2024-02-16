@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createContext, useState } from "react";
+import { createContext, useState, useRef } from "react";
 import UrlPage from "./pages/UrlPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import "./index.css";
@@ -9,6 +9,9 @@ export const context = createContext();
 const App = () => {
   const [error, setError] = useState(null);
   const [deleteUrl, setDeleteUrl] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [url, setUrl] = useState(null);
+  const qrModalDiv = useRef();
 
   return (
     <context.Provider
@@ -17,6 +20,11 @@ const App = () => {
         setError,
         deleteUrl,
         setDeleteUrl,
+        isModalOpen,
+        setIsModalOpen,
+        qrModalDiv,
+        url,
+        setUrl,
       }}
     >
       <BrowserRouter>
