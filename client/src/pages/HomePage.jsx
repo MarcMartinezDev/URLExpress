@@ -4,11 +4,12 @@ import { context } from "../App.jsx";
 import TextField from "../components/TextField.jsx";
 import Button from "../components/Button.jsx";
 import Clipboard from "../components/Clipboard.jsx";
-import QrModal from "../components/QrModal.jsx";
+import QrModal from "../components/modals/QrModal.jsx";
+import ShareModal from "../components/modals/ShareModal.jsx";
 
 const HomePage = () => {
   const inputUrl = useRef();
-  const { error, setError, setDeleteUrl, isModalOpen, url, setUrl } =
+  const { error, setError, isQrModalOpen, isShareModalOpen, setIsQrModalOpen, setIsShareModalOpen, url, setUrl } =
     useContext(context);
 
   const handleSubmit = async e => {
@@ -19,23 +20,26 @@ const HomePage = () => {
         if (res.error) setError(res.error);
         else {
           setUrl(res);
-          setDeleteUrl(false);
         }
       });
   };
 
   return (
-    <div className="relative flex flex-col justify-center w-5/6 md:w-3/4 lg:w-1/2 m-auto h-screen ">
-      <QrModal></QrModal>
-      <div className={isModalOpen ? " hidden" : null}>
+    <div
+      className="relative flex flex-col justify-center w-5/6 md:w-3/4 lg:w-1/2 m-auto h-screen"
+      onClick={() => {
+        if (isQrModalOpen) setIsQrModalOpen(false);
+        if (isShareModalOpen) setIsShareModalOpen(false);
+      }}
+    >
+      <QrModal />
+      <ShareModal />
+      <div className={isQrModalOpen || isShareModalOpen ? " pointer-events-none opacity-30" : null}>
+        {error ? <p className="text-red-500 text-md ml-5">{error}</p> : null}
         <form onSubmit={handleSubmit} className="flex gap-1 mt-10">
-          <TextField
-            textFieldRef={inputUrl}
-            placeholderTextField="Copy an URL here"
-          />
+          <TextField textFieldRef={inputUrl} placeholderTextField="Copy an URL here" />
           <Button textButton="Shorter" typeButton="submit" />
         </form>
-        {error ? <p className="text-red-500 text-md ml-5">{error}</p> : null}
         {url ? <Clipboard url={url} /> : null}
       </div>
     </div>

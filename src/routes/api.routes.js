@@ -8,6 +8,9 @@ router.post("/create", async (req, res) => {
 
   if (!url) return res.status(400).json({ error: "url is required" });
 
+  const regExp = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+  if (!regExp.test(url)) return res.status(400).json({ error: "Invalid url" });
+
   const randomUrl = Math.random().toString(36).substring(2, 6);
 
   const newUrl = new Url({
@@ -17,13 +20,6 @@ router.post("/create", async (req, res) => {
 
   await newUrl.save();
   return res.json(newUrl.shortUrl);
-});
-
-router.delete("/delete", async (req, res) => {
-  const { shortUrl } = req.body;
-
-  await Url.deleteOne({ shortUrl });
-  res.json({ message: "Url has deleted" });
 });
 
 router.get("/admin/delete", async (req, res) => {

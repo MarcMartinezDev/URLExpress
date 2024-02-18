@@ -8,8 +8,8 @@ export const context = createContext();
 
 const App = () => {
   const [error, setError] = useState(null);
-  const [deleteUrl, setDeleteUrl] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [url, setUrl] = useState(null);
   const qrModalDiv = useRef();
 
@@ -18,10 +18,10 @@ const App = () => {
       value={{
         error,
         setError,
-        deleteUrl,
-        setDeleteUrl,
-        isModalOpen,
-        setIsModalOpen,
+        isQrModalOpen,
+        setIsQrModalOpen,
+        isShareModalOpen,
+        setIsShareModalOpen,
         qrModalDiv,
         url,
         setUrl,

@@ -5,3 +5,10 @@
 :root {
   @apply bg-gray-800 text-gray-300;
 }
+
+.modal-jsx {
+  @apply absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-gray-900 shadow-md p-8 rounded-md items-end z-10;
+}
+i {
+  @apply scale-125 cursor-pointer;
+}
