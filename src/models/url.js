@@ -8,6 +8,9 @@ const urlSchema = mongoose.Schema({
   shortUrl: {
     type: String,
   },
+  customUrl: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

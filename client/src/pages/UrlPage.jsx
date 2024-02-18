@@ -8,11 +8,11 @@ const UrlPage = () => {
   useEffect(() => {
     const redirect = async () => await redirectTo(url);
     redirect()
-      .then((res) => res.json())
-      .then((data) => {
+      .then(res => res.json())
+      .then(data => {
         console.log(data);
         if (data.url) return (window.location.href = data.url);
-        return (window.location.href = "/");
+        else return (window.location.href = "/404");
       });
   }, []);
 

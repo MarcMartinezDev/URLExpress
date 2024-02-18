@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useState, useRef } from "react";
 import UrlPage from "./pages/UrlPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
+import PageNotFound from "./pages/PageNotFound.jsx";
+import Layout from "./pages/Layout.jsx";
 import "./index.css";
 
 export const context = createContext();
@@ -29,7 +31,10 @@ const App = () => {
     >
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/404" element={<PageNotFound />} />
+          </Route>
           <Route path="/:url" element={<UrlPage />} />
         </Routes>
       </BrowserRouter>

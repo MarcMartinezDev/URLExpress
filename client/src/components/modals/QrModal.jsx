@@ -2,7 +2,7 @@ import { context } from "../../App";
 import { useContext, useEffect, useRef } from "react";
 
 const QrModal = () => {
-  const { isQrModalOpen, setIsQrModalOpen, url } = useContext(context);
+  const { isQrModalOpen, setIsQrModalOpen, url, modalAnimation } = useContext(context);
   const qrModalDiv = useRef();
 
   const closeModal = () => {
@@ -22,13 +22,12 @@ const QrModal = () => {
   }, [isQrModalOpen]);
 
   return isQrModalOpen ? (
-    <div className="modal-jsx flex flex-col gap-5">
-      <i className="fa-solid fa-xmark" onClick={closeModal}></i>
-      <div className=" rounded-mdbn text-center shadow-md text-gray-900 w-full">
-        <div className="rounded-md mb-2" ref={qrModalDiv}></div>
+    <div className="modal-jsx relative flex flex-col">
+      <i className="fa-solid fa-xmark absolute top-2 right-2" onClick={closeModal}></i>
+      <div className="text-center shadow-md m-auto">
+        <div ref={qrModalDiv}></div>
         <div className="flex justify-between rounded-md">
-          <p className="bg-green-300 w-full p-2 cursor-pointer rounded-bl-md">Share</p>
-          <p className="bg-blue-300 w-full p-2 cursor-pointer rounded-br-md">Download</p>
+          <p className="bg-gray-800 w-full p-2 cursor-pointer text-gray-200">Download</p>
         </div>
       </div>
     </div>

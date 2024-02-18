@@ -19,8 +19,8 @@ const ShareModal = () => {
   const { url, isShareModalOpen, setIsShareModalOpen } = useContext(context);
 
   return isShareModalOpen ? (
-    <div className="modal-jsx flex flex-col gap-5">
-      <i className="fa-solid fa-xmark scale-125" onClick={() => setIsShareModalOpen(false)} />
+    <div className="modal-jsx relative flex flex-col gap-5">
+      <i className="fa-solid fa-xmark scale-125 absolute top-2 right-2" onClick={() => setIsShareModalOpen(false)} />
       <div className="flex gap-5">
         <WhatsappShareButton url={window.location.href + url} title={window.location.href + url}>
           <WhatsappIcon size={40} round />

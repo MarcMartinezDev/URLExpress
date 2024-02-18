@@ -3,12 +3,17 @@
 @tailwind utilities;
 
 :root {
-  @apply bg-gray-800 text-gray-300;
+  @apply bg-gray-800 text-gray-200 font-mono;
 }
 
 .modal-jsx {
-  @apply absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-gray-900 shadow-md p-8 rounded-md items-end z-10;
+  @apply absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-gray-600 shadow-lg p-10 items-end z-10;
 }
+
 i {
   @apply scale-125 cursor-pointer;
+}
+
+input {
+  @apply focus:transition-all;
 }
