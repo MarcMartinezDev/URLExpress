@@ -2,7 +2,9 @@ import express from "express";
 import apiRouter from "./src/routes/api.routes.js";
 import router from "./src/routes/routes.js";
 import cors from "cors";
+import env from "dotenv";
 
+env.config();
 const app = express();
 
 app.use(express.json());

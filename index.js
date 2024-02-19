@@ -1,9 +1,10 @@
 import app from "./app.js";
-import { PORT } from "./config.js";
 import { connectDb } from "./database.js";
+import env from "dotenv";
 
+env.config();
 connectDb();
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
 });
