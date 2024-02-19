@@ -44,7 +44,7 @@ const HomePage = () => {
       <ShareModal />
       <div className={`flex flex-col ${isQrModalOpen || isShareModalOpen ? "pointer-events-none opacity-30" : null}`}>
         {error ? <ErrorMessage message={error} /> : null}
-        <form onSubmit={handleSubmit} className={`flex flex-col gap-5 ${error ? "mt-6" : null}`}>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div className="flex gap-1">
             <TextField
               textFieldRef={inputUrl}
@@ -58,7 +58,7 @@ const HomePage = () => {
           ) : null}
         </form>
         <p
-          className="ml-auto my-2 mr-2 cursor-pointer hover:text-purple-600"
+          className="ml-auto my-2 mr-2 cursor-pointer hover:text-primary"
           onClick={() => {
             if (!isCustomUrl) setIsCustomUrl(true);
             else setIsCustomUrl(false);

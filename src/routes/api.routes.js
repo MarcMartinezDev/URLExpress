@@ -1,4 +1,5 @@
 import { Router } from "express";
+import fs from "fs";
 import Url from "../models/url.js";
 
 const router = Router();
@@ -43,6 +44,9 @@ router.post("/create-custom", async (req, res) => {
   return res.json(newUrl.customUrl);
 });
 
+/*
+ * admin routes
+ **/
 router.get("/admin/delete", async (req, res) => {
   await Url.deleteMany({});
   res.json({ message: "All urls deleted" });

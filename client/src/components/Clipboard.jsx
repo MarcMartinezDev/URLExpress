@@ -6,12 +6,12 @@ const Clipboard = ({ url }) => {
   const [action, setAction] = useState();
 
   return (
-    <section className="absolute w-full top-2/3">
+    <section className="w-full">
       <div className={`flex w-full justify-between p-4 bg-slate-600 my-2 text-lg`}>
         <p>{window.location.href + url}</p>
         <div className="flex gap-7 items-center">
           <i
-            className={`fa-solid fa-copy ${action === "copy" ? "text-black" : null}`}
+            className={`fa-regular fa-clipboard ${action === "copy" ? "text-black" : null}`}
             onClick={() => {
               navigator.clipboard.writeText(window.location.href + url);
               setAction("copy");

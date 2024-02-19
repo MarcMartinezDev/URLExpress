@@ -33,7 +33,7 @@ const App = () => {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/404" element={<PageNotFound />} />
+            <Route path="/api/404" element={<PageNotFound />} />
           </Route>
           <Route path="/:url" element={<UrlPage />} />
         </Routes>

@@ -12,7 +12,7 @@ const UrlPage = () => {
       .then(data => {
         console.log(data);
         if (data.url) return (window.location.href = data.url);
-        else return (window.location.href = "/404");
+        else return (window.location.href = "/api/404");
       });
   }, []);
 
