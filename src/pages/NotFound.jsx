@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const PageNotFound = () => {
+const NotFound = () => {
   return (
     <section className="flex flex-col text-lg gap-10">
       <div className="flex items-center gap-5">
@@ -17,4 +17,4 @@ const PageNotFound = () => {
   );
 };
 
-export default PageNotFound;
+export default NotFound;

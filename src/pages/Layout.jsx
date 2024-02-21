@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 const Layout = () => {
   return (
     <>
-      <header className="">
+      <header>
         <Header />
       </header>
       <main className="mt-48 w-full">

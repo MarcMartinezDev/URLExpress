@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext, useState, useRef } from "react";
 import UrlPage from "./pages/UrlPage.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import PageNotFound from "./pages/PageNotFound.jsx";
+import Home from "./pages/Home.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import Layout from "./pages/Layout.jsx";
 import "./index.css";
 
@@ -12,7 +12,8 @@ const App = () => {
   const [error, setError] = useState(null);
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-  const [url, setUrl] = useState(null);
+  const [menuActive, setMenuActive] = useState("shortener");
+  const [url, setUrl] = useState("");
   const qrModalDiv = useRef();
 
   return (
@@ -27,13 +28,15 @@ const App = () => {
         qrModalDiv,
         url,
         setUrl,
+        menuActive,
+        setMenuActive,
       }}
     >
       <BrowserRouter>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/api/404" element={<PageNotFound />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/api/404" element={<NotFound />} />
           </Route>
           <Route path="/:url" element={<UrlPage />} />
         </Routes>

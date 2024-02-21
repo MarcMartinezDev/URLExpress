@@ -1,4 +1,4 @@
-import qrcode from "qrcode";
+import { createQrcode, downloadQrcode } from "../../utils/app.utils.js";
 import { context } from "../../App";
 import { useContext, useEffect, useRef } from "react";
 
@@ -11,35 +11,12 @@ const QrModal = () => {
   };
 
   const download = () => {
-    const srcImg = qrImg.current.src;
-
-    const link = document.createElement("a");
-    link.href = srcImg;
-    link.download = "qrcode.png";
-    link.click();
+    downloadQrcode(qrImg.current.src);
   };
 
   useEffect(() => {
     if (isQrModalOpen) {
-      qrcode.toDataURL(
-        url,
-        {
-          errorCorrectionLevel: "H",
-          type: "image/jpeg",
-          quality: 0.3,
-          margin: 1,
-          width: 200,
-          height: 200,
-          color: {
-            dark: "#000000",
-            light: "#ffffff",
-          },
-        },
-        (err, url) => {
-          if (err) throw err;
-          qrImg.current.src = url;
-        }
-      );
+      createQrcode(url, qrImg);
     }
   }, [isQrModalOpen]);
 
