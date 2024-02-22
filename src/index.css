@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  @apply bg-gray-800 text-gray-200 font-mono;
+  @apply bg-slate-800 text-gray-200 font-mono;
 }
 
 body {
@@ -15,15 +15,7 @@ h2 {
 }
 
 i {
-  @apply scale-125 cursor-pointer;
-}
-
-input {
-  @apply bg-transparent outline-none w-full transition-all h-10;
-}
-
-Button {
-  @apply w-full p-2 bg-primary shadow-md text-black text-lg hover:bg-purple-600 transition-all;
+  @apply scale-150 cursor-pointer hover:text-primary transition-all;
 }
 
 /* 
@@ -40,34 +32,13 @@ Button {
 
 /* TextField styles */
 .fieldset-focused {
-  @apply w-full border-2 bg-transparent relative text-lg  border-primary shadow-md placeholder:text-sm transition-all p-2;
-}
-.fieldset-unfocused {
-  @apply w-full border-2 bg-transparent relative text-lg  border-gray-600 p-2;
+  @apply border-primary shadow-md placeholder:text-sm transition-all p-2;
 }
 
 .legend-focused {
-  @apply bg-gray-800 h-fit text-sm px-2 inline absolute top-[-12px];
-}
-.legend-unfocused {
-  @apply bg-gray-800 h-fit text-sm px-2 hidden;
+  @apply inline absolute top-[-12px];
 }
 
 .custom-textfield {
   @apply transition-all duration-1000;
-}
-
-/* modals */
-.modal-jsx {
-  @apply absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-gray-600 shadow-lg p-10 items-end z-10;
-}
-
-/* images */
-.qr-code-image {
-  @apply p-1 m-auto bg-white cursor-pointer hover:bg-primary transition-all;
-}
-
-.card-img {
-  filter: invert();
-  @apply m-auto;
 }

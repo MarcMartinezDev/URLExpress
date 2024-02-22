@@ -4,15 +4,12 @@ import { context } from "../App.jsx";
 import TextField from "./TextField.jsx";
 import Button from "./Button.jsx";
 import ErrorMessage from "./ErrorMessage.jsx";
-import Clipboard from "./Clipboard.jsx";
-import QrModal from "./modals/QrModal.jsx";
-import ShareModal from "./modals/ShareModal.jsx";
+import Results from "./Results.jsx";
 
 const Shortener = () => {
   const inputUrl = useRef();
   const customUrl = useRef();
-  const [isResult, setIsResult] = useState(false);
-  const { error, setError, isQrModalOpen, isShareModalOpen, url, setUrl } = useContext(context);
+  const { error, setError, isModalOpen, setIsModalOpen, setUrl } = useContext(context);
 
   const [isCustomUrl, setIsCustomUrl] = useState(false);
 
@@ -23,20 +20,20 @@ const Shortener = () => {
       await createShortUrl(inputUrl.current.value)
         .then(res => res.json())
         .then(res => {
-          if (res.error) setError(res.error);
+          if (res.error) setError(res.error.errors[0]);
           else {
             setUrl(res);
-            setIsResult(true);
+            setIsModalOpen(true);
           }
         });
     } else {
       await createCustomUrl(inputUrl.current.value, customUrl.current.value)
         .then(res => res.json())
         .then(res => {
-          if (res.error) setError(res.error);
+          if (res.error) setError(res.error.errors[0]);
           else {
             setUrl(res);
-            setIsResult(true);
+            setIsModalOpen(true);
           }
         });
     }
@@ -44,11 +41,10 @@ const Shortener = () => {
 
   return (
     <div>
-      <QrModal />
-      <ShareModal />
-      <div className={`flex flex-col ${isQrModalOpen || isShareModalOpen ? "pointer-events-none opacity-30" : null}`}>
-        {error ? <ErrorMessage message={error} /> : null}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      {isModalOpen ? <Results /> : null}
+      <div className={`flex flex-col ${isModalOpen ? "pointer-events-none opacity-30" : null}`}>
+        {error ? <ErrorMessage message={error.msg} /> : null}
+        <form onSubmit={handleSubmit} className="relative flex flex-col gap-5">
           <div className="flex gap-1">
             <TextField
               textFieldRef={inputUrl}
@@ -58,7 +54,9 @@ const Shortener = () => {
             <Button textButton="Short" typeButton="submit" styles="w-1/4" />
           </div>
           {isCustomUrl ? (
-            <TextField textFieldRef={customUrl} placeholderTextField="mysite" legendTextField="Write a custom name" />
+            <div>
+              <TextField textFieldRef={customUrl} placeholderTextField="mysite" legendTextField="Write a custom name" />
+            </div>
           ) : null}
         </form>
         <p
@@ -71,7 +69,6 @@ const Shortener = () => {
         >
           {!isCustomUrl ? "Customize URL" : "Default URL"}
         </p>
-        {isResult ? <Clipboard url={url} /> : null}
       </div>
     </div>
   );

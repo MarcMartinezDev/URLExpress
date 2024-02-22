@@ -9,9 +9,9 @@ const Home = () => {
 
   return (
     <>
-      <section className="flex flex-col gap-32 ">
+      <section className="flex flex-col gap-32">
         {menuActive === "shortener" ? <Shortener /> : menuActive === "qrGenerator" ? <QrGenerator /> : null}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-20 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <Card
             cardImage="/img/facil.png"
             altImg="easy use image"

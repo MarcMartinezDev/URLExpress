@@ -36,7 +36,13 @@ const QrGenerator = () => {
           placeholderTextField="https://www.yoursite.com"
           legendTextField="Copy an url"
         />
-        <img className="qr-code-image" src="img/qr-code.png" alt="" width={50} onClick={handleSubmit} />
+        <img
+          className="p-1 m-auto bg-white cursor-pointer hover:bg-primary transition-all"
+          src="img/qr-code.png"
+          alt=""
+          width={50}
+          onClick={handleSubmit}
+        />
       </form>
       <div className="flex items-center justify-center gap-10">
         <img src="" alt="" ref={imgRef} width={150} />

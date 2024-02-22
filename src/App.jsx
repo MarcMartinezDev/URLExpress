@@ -10,8 +10,7 @@ export const context = createContext();
 
 const App = () => {
   const [error, setError] = useState(null);
-  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [menuActive, setMenuActive] = useState("shortener");
   const [url, setUrl] = useState("");
   const qrModalDiv = useRef();
@@ -21,10 +20,8 @@ const App = () => {
       value={{
         error,
         setError,
-        isQrModalOpen,
-        setIsQrModalOpen,
-        isShareModalOpen,
-        setIsShareModalOpen,
+        isModalOpen,
+        setIsModalOpen,
         qrModalDiv,
         url,
         setUrl,
