@@ -37,7 +37,7 @@ const QrGenerator = () => {
           legendTextField="Copy an url"
         />
         <img
-          className="p-1 m-auto bg-white cursor-pointer hover:bg-primary transition-all"
+          className="p-1 m-auto bg-white cursor-pointer hover:bg-regular transition-all"
           src="img/qr-code.png"
           alt=""
           width={50}

@@ -11,7 +11,7 @@ export const context = createContext();
 const App = () => {
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [menuActive, setMenuActive] = useState("shortener");
+  const [menuActive, setMenuActive] = useState("short");
   const [url, setUrl] = useState("");
   const qrModalDiv = useRef();
 

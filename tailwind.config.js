@@ -4,7 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#FF1ACF",
+        dark: "#005187",
+        semiDark: "#4d82bc",
+        regular: "#84b6f4",
+        semiLight: "#c4dafa",
+        light: "#fcffff",
       },
     },
   },

@@ -8,10 +8,10 @@ export const createQrcode = (url, reference) => {
       type: "image/jpeg",
       quality: 0.3,
       margin: 1,
-      width: 200,
-      height: 200,
+      width: 100,
+      height: 100,
       color: {
-        dark: "#000000",
+        regular: "#000000",
         light: "#ffffff",
       },
     },

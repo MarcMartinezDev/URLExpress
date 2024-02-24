@@ -29,7 +29,7 @@ const Results = () => {
   }, [isModalOpen]);
 
   return (
-    <div className="absolute top-24 w-full bg-slate-900 z-10 rounded-md p-10 flex flex-col gap-5">
+    <div className="absolute -top-20 w-full bg-slate-900 z-10 rounded-md p-10 flex flex-col gap-5 border-2 border-slate-600">
       <div className="relative">
         <i className="fa-solid fa-xmark absolute -right-5 -top-5" onClick={() => setIsModalOpen(false)} />
         <p>Your url</p>
@@ -40,7 +40,7 @@ const Results = () => {
           value={window.location.href + url}
         />
         <i
-          className={`fa-solid fa-share-nodes absolute right-5 top-9 ${isShare ? "text-primary" : null}`}
+          className={`fa-solid fa-share-nodes absolute right-5 top-9 ${isShare ? "text-regular" : null}`}
           onClick={() => {
             if (isShare) setIsShare(false);
             else setIsShare(true);
@@ -69,11 +69,12 @@ const Results = () => {
           </FacebookShareButton>
         </div>
       ) : null}
-
-      <div className="w-1/3">
-        <p>QR Code</p>
-        <img className="w-full" src="" alt="QR Code" width={100} ref={imgQrcode} />
-        <Button textButton="Download" clickEvent={downloadQr} styles="w-full rounded-t-none" />
+      <p>QR Code</p>
+      <div className=" flex items-center gap-5">
+        <div>
+          <img src="" alt="QR Code" width={100} ref={imgQrcode} />
+        </div>
+        <Button textButton="Download" clickEvent={downloadQr} styles="w-1/3 h-fit" />
       </div>
     </div>
   );

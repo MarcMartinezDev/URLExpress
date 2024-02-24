@@ -3,7 +3,7 @@ const Button = ({ textButton, typeButton, clickEvent, styles }) => {
     <button
       onClick={clickEvent}
       typeof={typeButton}
-      className={`p-2 rounded-md bg-primary shadow-md text-black text-lg hover:bg-purple-600 transition-all ${styles}`}
+      className={` bg-dark text-white text-lg shadow-md ${styles} hover:bg-semiDark hover:shadow-inner transition-all`}
     >
       {textButton}
     </button>

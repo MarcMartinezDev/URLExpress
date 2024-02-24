@@ -3,42 +3,46 @@
 @tailwind utilities;
 
 :root {
-  @apply bg-slate-800 text-gray-200 font-mono;
+  @apply font-sans font-medium text-dark bg-[#f9f9f9];
 }
 
-body {
-  @apply w-5/6 md:w-3/4 lg:w-7/12 m-auto relative min-h-screen;
+#root {
+  @apply grid grid-cols-1 gap-16 min-h-screen;
 }
 
 h2 {
-  @apply text-2xl text-primary text-nowrap;
+  @apply text-3xl text-dark text-nowrap;
 }
 
 i {
-  @apply scale-150 cursor-pointer hover:text-primary transition-all;
+  @apply scale-150 cursor-pointer hover:text-regular transition-all;
 }
 
 /* 
 * Custom classNames styles
 */
 
-/* header styles */
-.menu-header {
-  @apply border-b-2 border-gray-800 cursor-pointer;
+.responsive-container {
+  @apply w-5/6 md:w-3/4 lg:w-1/2 m-auto relative;
 }
-.menu-header-active {
-  @apply text-primary border-b-2 border-primary transition-all;
+
+/* menu styles */
+
+.menu {
+  @apply bg-transparent py-2 cursor-pointer px-4;
+}
+.menu-active {
+  @apply bg-dark transition-all py-2 px-4 text-white;
 }
 
 /* TextField styles */
+fieldset {
+  @apply w-full border-2 bg-transparent relative text-lg border-semiDark h-14;
+}
 .fieldset-focused {
-  @apply border-primary shadow-md placeholder:text-sm transition-all p-2;
+  @apply w-full relative h-14  border-dark shadow-md placeholder:text-sm transition-all p-2;
 }
 
 .legend-focused {
-  @apply inline absolute top-[-12px];
-}
-
-.custom-textfield {
-  @apply transition-all duration-1000;
+  @apply inline absolute top-[-12px] bg-white text-dark;
 }
