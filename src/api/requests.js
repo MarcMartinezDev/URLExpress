@@ -5,7 +5,12 @@ export const createShortUrl = url =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ url }),
-  });
+  })
+    .then(res => res.json())
+    .then(res => {
+      if (res.error) return res.error.errors[0];
+      else return res;
+    });
 
 export const createCustomUrl = (url, customUrl) =>
   fetch("http://localhost:3000/api/create-custom", {
@@ -14,6 +19,17 @@ export const createCustomUrl = (url, customUrl) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ url, customUrl }),
-  });
+  })
+    .then(res => res.json())
+    .then(res => {
+      if (res.error) return res.error.errors[0];
+      else return res;
+    });
 
-export const redirectTo = url => fetch(`http://localhost:3000/${url}`);
+export const redirectTo = url =>
+  fetch(`http://localhost:3000/${url}`)
+    .then(res => res.json())
+    .then(res => {
+      if (res.url) return (window.location.href = res.url);
+      else return (window.location.href = "/urlexpress/not-found");
+    });

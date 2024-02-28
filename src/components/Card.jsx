@@ -1,7 +1,7 @@
 const Card = ({ cardImage, cardDescription, altImg }) => {
   return (
-    <div className="flex flex-col gap-5 text-center text-gray-400">
-      <img className="m-auto img-ico" src={cardImage} alt={altImg} width={120} />
+    <div className="flex flex-col justify-between items-center gap-5 text-center">
+      <img src={cardImage} alt={altImg} width={100} />
       <p>{cardDescription}</p>
     </div>
   );

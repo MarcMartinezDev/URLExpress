@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createUrlController, createCustomUrlController, redirectController } from "../controllers/url.controller.js";
-import { validateUrl, validateCustomUrl } from "../validators/urls.js";
+import { validateUrl, validateCustomUrl } from "../validators/url.validators.js";
 import Url from "../models/url.js";
 
 const router = Router();

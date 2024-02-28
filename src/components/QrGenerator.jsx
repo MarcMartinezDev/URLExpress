@@ -28,32 +28,29 @@ const QrGenerator = () => {
   };
 
   return (
-    <>
-      {error ? <ErrorMessage message="Please write a correct URL" /> : null}
-      <form className="flex gap-2 mb-10" onSubmit={handleSubmit}>
+    <div className="text-center">
+      <h2 className="mb-5">QR Generator</h2>
+      <p className="mb-10">
+        Welcome to URLExpress, fast and efficient solution to simplify web links and generate QR codes.
+      </p>
+      <form className="flex gap-1" onSubmit={handleSubmit}>
         <TextField
           textFieldRef={inputQrcodeRef}
           placeholderTextField="https://www.yoursite.com"
           legendTextField="Copy an url"
         />
-        <img
-          className="p-1 m-auto bg-white cursor-pointer hover:bg-regular transition-all"
-          src="img/qr-code.png"
-          alt=""
-          width={50}
-          onClick={handleSubmit}
-        />
+        <Button textButton="Create QR" typeButton="submit" styles="w-1/4" />
       </form>
-      <div className="flex items-center justify-center gap-10">
-        <img src="" alt="" ref={imgRef} width={150} />
+      {error ? <ErrorMessage message="Please write a correct URL" /> : null}
+      <div className="flex items-center justify-center gap-10 mt-10">
+        <img src="" alt="" ref={imgRef} width={120} />
         {isQrcode ? (
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-">
             <Button textButton="Download" clickEvent={download} />
-            <Button textButton="Share" />
           </div>
         ) : null}
       </div>
-    </>
+    </div>
   );
 };
 

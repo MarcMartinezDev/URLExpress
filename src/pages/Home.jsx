@@ -8,14 +8,14 @@ const Home = () => {
   const { menuActive, setMenuActive } = useContext(context);
 
   return (
-    <div className="grid grid-cols-1 gap-32">
+    <div className="grid grid-cols-1 gap-14">
       <div>
         <div className="flex">
           <p className={menuActive === "short" ? "menu-active" : "menu"} onClick={() => setMenuActive("short")}>
             Short Url
           </p>
           <p className={menuActive === "qrcode" ? "menu-active" : "menu"} onClick={() => setMenuActive("qrcode")}>
-            QR Code Generator
+            QR Generator
           </p>
         </div>
         <div className="p-10 shadow-md shadow-slate-300 min-h-[400px] bg-white">
@@ -26,12 +26,13 @@ const Home = () => {
         <Card
           cardImage="/svg/simple-like.svg"
           altImg="easy use image"
-          cardDescription="ShortURL is easy and fast, enter the long link to get your shortened link"
+          cardDescription="An intuitive and
+          easy-to-use tool that allows you to reduce the length of your URLs"
         />
         <Card
           cardImage="/svg/link.svg"
           altImg="easy use image"
-          cardDescription="Use any link, no matter what size, ShortURL always shortens"
+          cardDescription="Use any link, no matter what size, URLExpress always shortens"
         />
         <Card
           cardImage="/svg/time.svg"
@@ -41,7 +42,7 @@ const Home = () => {
         <Card
           cardImage="/svg/devices.svg"
           altImg="easy use image"
-          cardDescription="Use any link, no matter what size, ShortURL always shortens"
+          cardDescription="Responsive design, compatible with different devices and screen sizes to offer an optimal experience"
         />
       </div>
     </div>

@@ -1,6 +1,6 @@
-import { useRef, useContext, useEffect, useState } from "react";
-import { createQrcode, downloadQrcode } from "../utils/app.utils";
 import { context } from "../App";
+import { createQrcode, downloadQrcode } from "../utils/app.utils";
+import { useRef, useContext, useEffect, useState } from "react";
 import Button from "./Button";
 import {
   WhatsappShareButton,
@@ -20,27 +20,25 @@ import {
 const Results = () => {
   const imgQrcode = useRef();
   const [isShare, setIsShare] = useState(false);
-  const { url, isModalOpen, setIsModalOpen } = useContext(context);
+  const { url, isResults, setIsResults } = useContext(context);
 
   const downloadQr = () => downloadQrcode(imgQrcode.current.src);
 
   useEffect(() => {
-    if (isModalOpen) createQrcode(url, imgQrcode);
-  }, [isModalOpen]);
+    if (isResults) createQrcode(url, imgQrcode);
+  }, [isResults]);
 
   return (
-    <div className="absolute -top-20 w-full bg-slate-900 z-10 rounded-md p-10 flex flex-col gap-5 border-2 border-slate-600">
+    <div className="flex flex-col gap-5 min-h-[300px]">
       <div className="relative">
-        <i className="fa-solid fa-xmark absolute -right-5 -top-5" onClick={() => setIsModalOpen(false)} />
-        <p>Your url</p>
         <input
-          className="bg-transparent border-2 w-full border-gray-600 rounded-md min-h-10 pl-5 pr-10 outline-none"
+          className="border-2 border-dark w-full min-h-10 pl-5 pr-10 outline-none"
           type="text"
           readOnly
           value={window.location.href + url}
         />
         <i
-          className={`fa-solid fa-share-nodes absolute right-5 top-9 ${isShare ? "text-regular" : null}`}
+          className={`fa-solid fa-share-nodes absolute right-5 top-3 ${isShare ? "text-regular" : null}`}
           onClick={() => {
             if (isShare) setIsShare(false);
             else setIsShare(true);
@@ -48,7 +46,7 @@ const Results = () => {
         />
       </div>
       {isShare ? (
-        <div className="flex gap-5">
+        <div className="flex gap-5 justify-center">
           <WhatsappShareButton url={window.location.href + url} title={window.location.href + url}>
             <WhatsappIcon size={40} round />
           </WhatsappShareButton>
@@ -69,12 +67,14 @@ const Results = () => {
           </FacebookShareButton>
         </div>
       ) : null}
-      <p>QR Code</p>
-      <div className=" flex items-center gap-5">
+      <div className=" flex items-center m-auto gap-5">
         <div>
-          <img src="" alt="QR Code" width={100} ref={imgQrcode} />
+          <img src="" alt="QR Code" width={120} ref={imgQrcode} />
         </div>
-        <Button textButton="Download" clickEvent={downloadQr} styles="w-1/3 h-fit" />
+        <div className="flex flex-col gap-5">
+          <Button textButton="Download QR" clickEvent={downloadQr} styles="py-1" />
+          <Button textButton="Short another url" clickEvent={() => setIsResults(false)} styles="py-1 px-2" />
+        </div>
       </div>
     </div>
   );

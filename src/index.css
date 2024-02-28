@@ -11,7 +11,7 @@
 }
 
 h2 {
-  @apply text-3xl text-dark text-nowrap;
+  @apply text-3xl text-dark;
 }
 
 i {

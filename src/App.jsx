@@ -1,28 +1,29 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createContext, useState, useRef } from "react";
+import { createContext, useState } from "react";
 import UrlPage from "./pages/UrlPage.jsx";
 import Home from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Layout from "./pages/Layout.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import ReportUrl from "./pages/ReportUrl.jsx";
 import "./index.css";
 
 export const context = createContext();
 
 const App = () => {
   const [error, setError] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isResults, setIsResults] = useState(false);
   const [menuActive, setMenuActive] = useState("short");
   const [url, setUrl] = useState("");
-  const qrModalDiv = useRef();
 
   return (
     <context.Provider
       value={{
         error,
         setError,
-        isModalOpen,
-        setIsModalOpen,
-        qrModalDiv,
+        isResults,
+        setIsResults,
         url,
         setUrl,
         menuActive,
@@ -33,7 +34,10 @@ const App = () => {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/api/404" element={<NotFound />} />
+            <Route path="/urlexpress/not-found" element={<NotFound />} />
+            <Route path="/urlexpress/about" element={<About />} />
+            <Route path="/urlexpress/contact" element={<Contact />} />
+            <Route path="/urlexpress/report-url" element={<ReportUrl />} />
           </Route>
           <Route path="/:url" element={<UrlPage />} />
         </Routes>
