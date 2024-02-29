@@ -1,4 +1,5 @@
 import qrcode from "qrcode";
+import emailjs from "@emailjs/browser";
 
 export const createQrcode = (url, reference) => {
   qrcode.toDataURL(
@@ -30,3 +31,27 @@ export const downloadQrcode = srcImage => {
   link.download = "qrcode.png";
   link.click();
 };
+
+export const initEmail = () => {
+  emailjs.init({
+    publicKey: "cBdqhdPI9lDBr0Lna",
+    blockHeadless: true,
+    blockList: {
+      list: [],
+      watchVariable: "from_email",
+    },
+    limitRate: {
+      throttle: 5000,
+    },
+  });
+};
+
+export const sendForm = async form =>
+  emailjs
+    .sendForm("service_rux5eas", "template_0lqs56v", form, {
+      publicKey: "cBdqhdPI9lDBr0Lna",
+    })
+    .then(res => {
+      if (res.error) return res.error;
+      else return { message: "Your email has been sent successfully" };
+    });

@@ -2,13 +2,15 @@ import { useState } from "react";
 import { context } from "../App";
 import { useContext } from "react";
 
-const TextField = ({ textFieldRef, placeholderTextField, legendTextField }) => {
+const TextField = ({ refTextField, placeholderTextField, legendTextField, nameTextField }) => {
   const [isFocused, setIsFocused] = useState(false);
   const { setError } = useContext(context);
 
   return (
     <fieldset className={isFocused ? "fieldset-focused" : "fieldset"}>
-      <legend className={`text-sm px-2 hidden ${isFocused ? "legend-focused" : null}`}>{legendTextField}</legend>
+      <legend className={`text-sm px-2 hidden ${isFocused ? "legend-focused" : null}`}>
+        {legendTextField}
+      </legend>
       <input
         className="bg-transparent outline-none w-full transition-all h-full px-4 placeholder:text-gray-400"
         onFocus={() => setIsFocused(true)}
@@ -19,7 +21,8 @@ const TextField = ({ textFieldRef, placeholderTextField, legendTextField }) => {
         }}
         type="text"
         placeholder={isFocused ? "" : placeholderTextField}
-        ref={textFieldRef}
+        ref={refTextField}
+        name={nameTextField}
       ></input>
     </fieldset>
   );

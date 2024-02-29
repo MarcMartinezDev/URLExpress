@@ -36,3 +36,7 @@ export const redirectController = async (req, res) => {
 
   res.json(urlExists);
 };
+
+export const contactFormController = (req, res) => {
+  res.json({ message: "Succes" });
+};

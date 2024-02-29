@@ -33,3 +33,16 @@ export const redirectTo = url =>
       if (res.url) return (window.location.href = res.url);
       else return (window.location.href = "/urlexpress/not-found");
     });
+
+export const validateContactEmail = (email, subject, message) =>
+  fetch("http://localhost:3000/api/validate-contact-form", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, subject, message }),
+  })
+    .then(res => res.json())
+    .then(res => {
+      if (res.error) return res.error.errors[0];
+    });

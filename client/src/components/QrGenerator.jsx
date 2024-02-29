@@ -31,11 +31,12 @@ const QrGenerator = () => {
     <div className="text-center">
       <h2 className="mb-5">QR Generator</h2>
       <p className="mb-10">
-        Welcome to URLExpress, fast and efficient solution to simplify web links and generate QR codes.
+        Welcome to URLExpress, fast and efficient solution to simplify web links and generate QR
+        codes.
       </p>
       <form className="flex gap-1" onSubmit={handleSubmit}>
         <TextField
-          textFieldRef={inputQrcodeRef}
+          refTextField={inputQrcodeRef}
           placeholderTextField="https://www.yoursite.com"
           legendTextField="Copy an url"
         />

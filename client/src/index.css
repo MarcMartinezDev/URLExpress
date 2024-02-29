@@ -18,6 +18,10 @@ i {
   @apply scale-150 cursor-pointer hover:text-regular transition-all;
 }
 
+textarea {
+  @apply outline-none border-2 border-semiDark focus:border-dark p-2 resize-none overflow-y-scroll placeholder:text-lg;
+}
+
 /* 
 * Custom classNames styles
 */

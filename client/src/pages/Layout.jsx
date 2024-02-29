@@ -40,7 +40,9 @@ const Layout = () => {
             <span>|</span>
             <p>Report URL</p>
             <span>|</span>
-            <p>Contact</p>
+            <Link to="/urlexpress/contact" reloadDocument className="text-white">
+              Contact
+            </Link>
           </div>
         </div>
       </footer>

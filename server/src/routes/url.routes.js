@@ -1,14 +1,20 @@
 import { Router } from "express";
-import { createUrlController, createCustomUrlController, redirectController } from "../controllers/url.controller.js";
+import {
+  createUrlController,
+  createCustomUrlController,
+  redirectController,
+  contactFormController,
+} from "../controllers/url.controller.js";
 import { validateUrl, validateCustomUrl } from "../validators/url.validators.js";
+import { validateContactForm } from "../validators/contact-form.validators.js";
 import Url from "../models/url.js";
 
 const router = Router();
 
-//router.get('/', createUrlController);
+router.get("/:url", redirectController);
 router.post("/api/create", validateUrl, createUrlController);
 router.post("/api/create-custom", validateCustomUrl, createCustomUrlController);
-router.get("/:url", redirectController);
+router.post("/api/validate-contact-form", validateContactForm, contactFormController);
 
 /*
  * admin routes

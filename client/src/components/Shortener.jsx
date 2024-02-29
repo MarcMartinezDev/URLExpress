@@ -33,12 +33,13 @@ const Shortener = () => {
     <div className="flex flex-col text-center">
       <h2 className="mb-5">Short URL</h2>
       <p className="mb-10">
-        Welcome to URLExpress, fast and efficient solution to simplify web links and generate QR codes.
+        Welcome to URLExpress, fast and efficient solution to simplify web links and generate QR
+        codes.
       </p>
       <form onSubmit={handleSubmit} className="relative flex flex-col gap-5">
         <div className="flex gap-1">
           <TextField
-            textFieldRef={inputUrl}
+            refTextField={inputUrl}
             placeholderTextField="https://www.yoursite.com"
             legendTextField="Copy an url"
           />
@@ -46,7 +47,11 @@ const Shortener = () => {
         </div>
         {isCustomUrl ? (
           <div>
-            <TextField textFieldRef={customUrl} placeholderTextField="mysite" legendTextField="Write a custom name" />
+            <TextField
+              refTextField={customUrl}
+              placeholderTextField="mysite"
+              legendTextField="Write a custom name"
+            />
           </div>
         ) : null}
       </form>
