@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
 
+/**
+ * Creates a new schema for the Url collection
+ * @param {object} mongoose - The Mongoose instance
+ * @returns {object} The Url schema
+ */
 const urlSchema = mongoose.Schema({
   url: {
     type: String,

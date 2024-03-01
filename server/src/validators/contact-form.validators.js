@@ -1,5 +1,11 @@
 import { check, validationResult } from "express-validator";
 
+/**
+ * Validates the email, subject, and message fields of the contact form.
+ * @param {Request} req - The request object.
+ * @param {Response} res - The response object.
+ * @param {NextFunction} next - The next middleware function.
+ */
 export const validateContactForm = [
   check("email")
     .exists()

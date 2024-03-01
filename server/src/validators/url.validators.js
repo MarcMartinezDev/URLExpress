@@ -1,6 +1,12 @@
 import { check, validationResult } from "express-validator";
 import Url from "../models/url.js";
 
+/**
+ * Validates the Url.
+ * @param {Request} req - The request object.
+ * @param {Response} res - The response object.
+ * @param {NextFunction} next - The next middleware function.
+ */
 export const validateUrl = [
   check("url")
     .exists()
@@ -23,6 +29,12 @@ export const validateUrl = [
   },
 ];
 
+/**
+ * Validates the custom Url.
+ * @param {Request} req - The request object.
+ * @param {Response} res - The response object.
+ * @param {NextFunction} next - The next middleware function.
+ */
 export const validateCustomUrl = [
   check("url")
     .exists()

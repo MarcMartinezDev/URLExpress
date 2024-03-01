@@ -1,5 +1,11 @@
 import Url from "../models/url.js";
 
+/**
+ * Creates a new short URL record in the database
+ * @param {object} req - The request object
+ * @param {string} req.body.url - The original URL
+ * @param {object} res - The response object
+ */
 export const createUrlController = async (req, res) => {
   const { url } = req.body;
 
@@ -14,6 +20,13 @@ export const createUrlController = async (req, res) => {
   return res.json(newUrl.shortUrl);
 };
 
+/**
+ * Creates a new short URL with custom name record in the database
+ * @param {object} req - The request object
+ * @param {string} req.body.url - The original URL
+ * @param {string} req.body.customUrl - The custom URL
+ * @param {object} res - The response object
+ */
 export const createCustomUrlController = async (req, res) => {
   const { url, customUrl } = req.body;
 
@@ -26,6 +39,12 @@ export const createCustomUrlController = async (req, res) => {
   return res.json(newUrl.customUrl);
 };
 
+/**
+ * Redirects the user to the original URL
+ * @param {object} req - The request object
+ * @param {string} req.params.url - The shortened or custom URL
+ * @param {object} res - The response object
+ */
 export const redirectController = async (req, res) => {
   const { url } = req.params;
 
@@ -37,6 +56,11 @@ export const redirectController = async (req, res) => {
   res.json(urlExists);
 };
 
+/**
+ * Handles the contact form submission
+ * @param {object} req - The request object
+ * @param {object} res - The response object
+ */
 export const contactFormController = (req, res) => {
   res.json({ message: "Succes" });
 };

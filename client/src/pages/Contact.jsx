@@ -40,6 +40,7 @@ const Contact = () => {
       const res = await sendForm(form.current);
       setStatus(res.message);
       setLoading(false);
+      setError(null);
     } catch (error) {
       setError("Error sending email, please try again later");
       setLoading(false);
